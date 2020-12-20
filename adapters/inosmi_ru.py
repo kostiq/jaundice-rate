@@ -60,6 +60,7 @@ def test_sanitize():
     assert '</article>' not in clean_plaintext
     assert '<h1>' not in clean_plaintext
 
+
 def test_sanitize_wrong_url():
     resp = requests.get('http://example.com')
     resp.raise_for_status()

@@ -13,6 +13,7 @@ DEFAULT_UNWRAPLIST_TAGS = [
     'footer'
 ]
 
+
 def remove_buzz_attrs(soup):
     """Remove all attributes except some special tags."""
     for tag in soup.find_all(True):
@@ -29,6 +30,7 @@ def remove_buzz_attrs(soup):
 
     return soup
 
+
 def remove_buzz_tags(soup, blacklist=DEFAULT_BLACKLIST_TAGS, unwraplist=DEFAULT_UNWRAPLIST_TAGS):
     """Remove most of tags, leaves only tags significant for text analysis."""
     for tag in soup.find_all(True):
@@ -36,6 +38,7 @@ def remove_buzz_tags(soup, blacklist=DEFAULT_BLACKLIST_TAGS, unwraplist=DEFAULT_
             tag.decompose()
         elif tag.name in unwraplist:
             tag.unwrap()
+
 
 def remove_all_tags(soup):
     """Unwrap all tags."""
