@@ -1,6 +1,14 @@
 # Фильтр желтушных новостей
 
-[TODO. Опишите проект, схему работы]
+Программа запускает локальный сервер, по адресу [localhost](127.0.0.1), который оценивает "желтизну" статей.
+
+Чтоы проверить статьи необходимо передать url статей как query параметр `urls`.
+
+Например:
+
+http://localhost/?urls=https://ya.ru,https://google.com,https://inosmi.ru/politic/20201220/248788103.html,https://inosmi.ru/politic/20201220/248782711.html
+
+
 
 Пока поддерживается только один новостной сайт - [ИНОСМИ.РУ](https://inosmi.ru/). Для него разработан специальный адаптер, умеющий выделять текст статьи на фоне остальной HTML разметки. Для других новостных сайтов потребуются новые адаптеры, все они будут находиться в каталоге `adapters`. Туда же помещен код для сайта ИНОСМИ.РУ: `adapters/inosmi_ru.py`.
 
@@ -19,7 +27,7 @@ pip install -r requirements.txt
 # Как запустить
 
 ```python3
-python main.py
+python server.py
 ```
 
 # Как запустить тесты
@@ -32,6 +40,10 @@ python -m pytest adapters/inosmi_ru.py
 
 ```
 python -m pytest text_tools.py
+```
+
+```
+python -m pytest test_process_articles.py
 ```
 
 # Цели проекта
