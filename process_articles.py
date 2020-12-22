@@ -81,9 +81,8 @@ async def process_article(article_score_list, morph, article_url, charged_words)
         })
 
 
-async def main(article_list):
+async def process_urls(morph, article_list):
     charged_words_folder = 'charged_dict'
-    morph = pymorphy2.MorphAnalyzer()
     charged_words = list(get_charged_words(charged_words_folder))
     article_score_list = []
     async with create_task_group() as tg:
@@ -95,4 +94,5 @@ async def main(article_list):
 
 if __name__ == '__main__':
     logging.basicConfig(level='INFO')
-    asyncio.run(main(TEST_ARTICLES))
+    morph = pymorphy2.MorphAnalyzer()
+    asyncio.run(process_urls(morph, TEST_ARTICLES))
